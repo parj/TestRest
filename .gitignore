@@ -1,0 +1,28 @@
+#Gradle Directories
+.gradle/
+target/
+
+#Maven Directory
+build/
+
+#Compiled classes and jar files
+*.class
+
+#Mac OS 
+.DS_Store
+
+#Temp directory
+lib/
+bin/
+out/
+
+#Eclipse
+.project
+.classpath
+.settings
+
+#Idea
+.idea/
+*.iml
+*.ipr
+*.iws

@@ -1,0 +1,41 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    //Awaiting pull request
+    dependencies {
+       classpath group: 'org._10ne.gradle', name: 'rest-gradle-plugin', version: '0.4.x-SNAPSHOT'
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: 'idea'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.4.7'
+    compile group: 'org.codehaus.groovy.modules.http-builder', name: 'http-builder', version: '0.7.1'
+}
+
+//Groovy example GET request
+task runScript (dependsOn: 'classes', type: JavaExec) {
+    main = 'testPost'
+    classpath = sourceSets.main.runtimeClasspath
+}
+
+//Alternate way via gradle - requires pull request to be approved - https://github.com/noamt/rest-gradle-plugin/pull/25
+task instantAnswer(type: org._10ne.gradle.rest.RestTask) {
+    httpMethod = 'get'
+    uri = 'http://api.duckduckgo.com/'
+    query = [q: 'DuckDuckGo', format: 'json']
+    contentType = groovyx.net.http.ContentType.JSON
+    responseHandler {
+        println it
+    }
+}
