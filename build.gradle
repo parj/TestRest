@@ -21,11 +21,13 @@ repositories {
 dependencies {
     compile 'org.codehaus.groovy:groovy-all:2.4.7'
     compile group: 'org.codehaus.groovy.modules.http-builder', name: 'http-builder', version: '0.7.1'
+    compile group: 'commons-io', name: 'commons-io', version: '2.5'
+    compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.3.4'
 }
 
 //Groovy example GET request
 task runScript (dependsOn: 'classes', type: JavaExec) {
-    main = 'testPost'
+    main = 'NewsAPI'
     classpath = sourceSets.main.runtimeClasspath
 }
 
